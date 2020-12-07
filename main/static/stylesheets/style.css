@@ -1,0 +1,357 @@
+* {
+	margin: 0;
+  padding: 0;
+  
+}
+body {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url(../img/film.jpg);
+  height: 100vh;
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-position: center center;
+  position: relative;
+  font-family: 'Poppins', sans-serif;
+}
+
+header {
+	background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url(../img/film.jpg);
+	height: 100vh;
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-position: center center;
+	position: relative;
+}
+
+h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+.my-container {
+  margin-top: 130px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 0;
+}
+.recom-button{
+  display: block;
+  margin: 50px auto;
+}
+.recommend-value {
+  color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  /* left d-flex flex-column */
+}
+.finish {
+  display: none;
+}
+.start {
+  display: none;
+}
+.accounts-tab > a {
+  margin: 5px 10px;
+  margin-top: 30px;
+  font-size: 20px;
+  color: whitesmoke;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  
+}
+.genre-buttons {
+  margin-top: 10px;
+}
+.board-footer {
+  padding: 0;
+  margin: 0;
+}
+.my-container {
+  margin-bottom: 100px;
+}
+.writer {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 24px;
+  color: black;
+}
+.writer-button{
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+.write {
+  font-size: 30px;
+}
+
+.wrapper {
+	width: 1500px;
+	margin: auto;
+}
+.nav-area {
+	float: right;
+	list-style: none;
+  margin-top: 30px;
+  font-weight: bold;
+}
+.nav-area li {
+	display: inline-block;
+}
+.nav-area li a {
+	color: #fff;
+	text-decoration: none;
+	padding: 5px 20px;
+	font-size: 20px;
+	text-transform: uppercase;
+}
+.nav-area li a:hover {
+	background: #fff;
+	color: #333;
+}
+.logo {
+	float: left;
+}
+.logo h1 {
+	width: 100%;
+    padding: 15px 0;
+    color: whitesmoke;
+}
+
+/* 모달 */
+.modal-content {
+  display: flex;
+}
+.modal-header {
+  flex-direction: column;
+  align-items: center;
+}
+.video-container {
+  width: 100%;
+  height: 400px;
+}
+.video {
+  width: 100%;
+  height: 100%;
+}
+.modal-body > a > button {
+  color: white;
+  background-color: black;
+  border-radius: 5px;
+  font-size: 25px;
+  margin-top: 10px;
+}
+
+.modal-footer > input {
+  font-size: 20px;
+  border: none;
+  border-radius: 3px;
+  background: #63767d;
+  margin-left: 10px;
+  color: whitesmoke;
+  padding: 5px;
+
+}
+
+/* 카드 */
+.card-button {
+  margin-top: 3rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
+  border: 0;
+  border-radius:15px
+}
+
+.card {
+  width: 11rem;
+  height: 23rem;
+  opacity: 1;
+  border-radius: 11px;
+  background-color: #3c300c;
+}
+
+.card:hover {
+  transform: translate3D(0,-1px,0) scale(1.2);
+  box-shadow : rgba(0,0,0,0.3) 0 0 0 9999px;
+  z-index : 100;
+  transition: all 0.4s ease; /* zoom in */
+}
+
+.card-body {
+  padding-top: 15px;
+}
+.card-img-top {
+  border: none;
+  border-radius: 10px;
+}
+
+.card-text {
+  font-size: 20px;
+  color: white;
+}
+
+/* 더보기 */
+#toc-content {
+  display: none;
+}
+#toc-toggle {
+  cursor: pointer;
+  color: white;
+  margin-left: 0.5rem;
+  font-size: 20px;
+}
+#toc-toggle:hover {
+    background-color: #fff;
+    color: #333;
+    transform:scale(1.2)
+}
+.morebutton {
+  margin-top: 10px;
+}
+
+/* 로그인창 스타일링 */
+
+.form-control {
+  display: block;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 3rem;
+  align-items: center;
+  text-align: center;
+  font-size: 1.3rem;
+}
+.color-white {
+  color: white;
+}
+.update-accounts{
+  color: white;
+}
+.update-accounts > p > label {
+  color: white;
+}
+.errorlist {
+  color: white;
+}
+.helptext {
+  color: white;
+}
+
+.my-container > h1 {
+  color: white;
+}
+.my-container > form > p > label {
+  text-align: center;
+  color: white;
+  font-size: larger;
+}
+
+#id_old_password {
+  display: block;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 3rem;
+  align-items: center;
+  text-align: center;
+  font-size: 1.3rem;
+}
+#id_new_password1 {
+  display: block;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 3rem;
+  align-items: center;
+  text-align: center;
+  font-size: 1.3rem;
+}
+#id_new_password2 {
+  display: block;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 3rem;
+  align-items: center;
+  text-align: center;
+  font-size: 1.3rem;
+}
+.my-container > form > ul {
+  list-style: none;
+  color: white;
+  text-align: center;
+}
+.my-container > form > input {
+  display: block;
+  width: 6em;
+  height: 3em;
+  margin-left: auto;
+  margin-right: auto;
+}
+#id_password {
+  display: block;
+  font-size: 31px;
+  margin-top: 7rem;
+}
+
+.update-accounts > p > label {
+  display: none;
+}
+.helptext {
+  display: block;
+  font-size: 32.5px;
+}
+.helptext > a {
+  text-decoration: none;
+  color: moccasin;
+}
+
+/* 커뮤니티 스타일링 */
+
+.board-header > p{
+  text-align: center;
+  line-height: 50px;
+
+}
+.effect-none {
+  text-decoration: none;
+  color:rgb(226, 212, 151);
+	padding: 5px 20px;
+	font-size: 20px;
+}
+
+.effect-none:hover {
+	background: #fff;
+	color: #333;
+}
+.context {
+  font-size: 25px;
+}
+.make-big {
+  font-size: 30px;
+}
+.ivory-color {
+  color: rgb(226, 212, 151);
+}
+
+.comment-control {
+  width: 50%;
+  height: 3rem;
+}
+.comment-list {
+  margin: 10px auto;
+}
+#id_title {
+  display: block;
+  width: 50%;
+  height: 3rem;
+}
+.review-content {
+  display: block;
+  width: 50%;
+  height: 20rem;
+}
+#id_movie_title {
+  display: block;
+  width: 50%;
+  height: 3rem;
+}

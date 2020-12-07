@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form class="update-accounts" action="">
+    {% csrf_token %}
+    {{form.as_p}}
+    <div style="padding-bottom: 30px;">
+        <input type="submit"
+        style="width: 100px; height: 35px; margin-left: auto; margin-right: auto; display:block;" 
+        >
+    </div>
+    </form>
+{% endblock content %}

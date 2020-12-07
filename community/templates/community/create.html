@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <a  class="context effect-none color-white" href="{% url 'community:index' %}">뒤로 가기!</a>
+  <h1 class="text-center">새 게시글을 작성하시면 됩니다!</h1>
+  <form action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit">
+  </form>
+  <hr>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1 class="writer-button">영화 후기 게시판</h1>
+  <div class="text-center">
+    <a class="write " href="{% url 'community:create' %}">
+      <i class="fas fa-edit ivory-color"><span class="writer ivory-color">  리뷰 작성하기</span></i>
+    </a>  
+  </div>
+  {% if user.is_authenticated %}
+  {% else %}
+    <a href="{% url 'accounts:login' %}">[새 글을 작성하려면 로그인하세요]</a>
+  {% endif %}
+  <hr>
+  {% for review in reviews %}
+    <div class="list-group">
+      <a href="{% url 'community:detail' review.pk %}">
+      <div 
+      class="board-header list-group-item list-group-item-action d-flex
+      justify-content-around">
+        <p class="community-list">글 제목: {{ review.title }}<p/>
+        <p><span>작성자 :{{ review.user }}</span></p>
+      </div>
+      </a>
+    </div>
+    <div class="board-footer d-flex justify-content-around">
+      <p class="color-white">{{review.updated_at}}</p>
+      <div   class="color-white" >
+        <form data-review-id="{{ review.pk }}" class="d-inline like-form">
+          {% csrf_token %}
+          {% if user in review.like_users.all %}
+              <button class="btn btn-link">
+                <i id="like-{{review.pk}}" class="fas fa-heart fa-lg" ></i>
+              </button>
+          {% else %}
+              <button class="btn btn-link ">
+                <i id="like-{{review.pk}}" class="fas fa-heart fa-lg"></i>
+              </button>
+          {% endif %}
+        </form>
+        <span id="like-count-{{ review.pk }}">{{ review.likes }}</span>명이 좋아합니다.
+      </div>
+    </div>
+  {% endfor %}
+
+  <script>
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value
+    const likeForms = document.querySelectorAll('.like-form')
+
+    likeForms.forEach(function (likeForm) {
+      likeForm.addEventListener('submit', function (event) {
+        event.preventDefault()
+        const reviewId = event.target.dataset.reviewId
+        axios.post(`http://127.0.0.1:8000/community/${reviewId}/like/`, {}, {
+          headers: {'X-CSRFToken': csrftoken}
+        })
+          .then(function (res) {
+            const liked = res.data.like_status
+            const likeIcon = document.querySelector(`#like-${reviewId}`)
+            const likeCount = res.data.like_count
+            const likeCountSpan = document.querySelector(`#like-count-${reviewId}`)
+            likeIcon.style.color = liked ? 'crimson' : 'black'
+            likeCountSpan.innerText = likeCount
+          })
+          .catch(function (err) {
+            console.log(err)
+          })
+      })
+    })
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+{% endblock %}

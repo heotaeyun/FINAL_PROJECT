@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <br>
+    {% for member in members %}
+        <p>NUMBER : {{member.pk}}</p>
+        <p>USERNAME : {{member.username}}</p>
+    {% endfor %}
+    
+{% endblock content %}

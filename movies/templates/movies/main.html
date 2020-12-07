@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="text-center  d-flex flex-wrap justify-content-around">
+    {% for movie in movies %}
+      <button onclick="clickModal(id)" id="button-{{movie.id}}" class="card-button" type="button" data-toggle="modal"
+      data-target="#movie-{{movie.id}}">
+      <div class="card">
+          <img src="{{movie.img_url}}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title text-white">{{movie.title}}</h5>
+            <p class="card-text">관람평:{{movie.rate}}</p>
+          </div>
+      </div>
+      </button>
+
+      <div class="modal fade" id="movie-{{movie.id}}" data-backdrop="static" data-keyboard="false" tabindex="-1"  role="dialog" aria-labelledby="modal-default" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 id="title-{{movie.id}}"class="modal-title"><{{movie.title}}></h3>
+              <br>
+                <div class="video-container">
+                  <iframe src="" id="frame-{{movie.id}}" class="video" frameborder="0"></iframe>
+                </div>
+            </div>
+            <div class="modal-body">
+              <h4><줄거리요약>
+              <br>
+              {{movie.story}}
+              </h4>
+              <a href="{% url 'community:index' %}">
+              <button>리뷰보기</button>
+              </a>
+            </div>
+            <div class="modal-footer">
+              <button onclick="clickClose(id)" id="close-{{movie.id}}" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <script>
+    const YOUTUBE_API_URL = "https://www.googleapis.com/youtube/v3/search"
+    const YOUTUBE_API_KEY = "AIzaSyBBt_xBVb114robyfWjaXiuB9fWN2D1GqM"
+
+    const nowPlyaing = false
+    const movieTitle = document.getElementsByClassName('modal-title')
+
+    function clickModal(id) {
+      // iframe 선택하기
+      const newName = id.split('-')
+      const idNumber = newName[1]
+      const myFrame = `frame-${idNumber}`
+      const selectFrame = document.getElementById(myFrame)
+      // 검색할떄 넣을 영화 제목 만들기
+      const movieTitleName = `title-${idNumber}`
+      const movieTitle = document.getElementById(movieTitleName).innerText
+      const searchMovie = `${movieTitle} 예고편`
+
+      // selectFrame에 src에 우리가 원하는 값 넣을거에요
+      axios.get(YOUTUBE_API_URL, {params: {key: YOUTUBE_API_KEY,
+      part: 'snippet', type:'video', q:searchMovie}})
+      .then(res => {
+        this.nowPlyaing = true
+        const myVideoId = res.data.items[0].id.videoId
+        selectFrame.setAttribute('src', `https://www.youtube.com/embed/${myVideoId}`)
+      })
+      .catch(err => {console.log(err)})
+    }
+    function clickClose(id) {
+      // 취소 버튼 누르고 모달창 나가면 유튜브 재생 멈추는 기능
+      this.nowPlyaing = false
+      const newNowPlaying = id.split('-')
+      const newIdNum = newNowPlaying[1]
+      const NewMyFrame = `frame-${newIdNum}`
+      const getIframe = document.getElementById(NewMyFrame)
+      getIframe.setAttribute('src', '')
+    }
+  </script>
+{% endblock content %}

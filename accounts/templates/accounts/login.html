@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+        <input type="submit"
+        style="width: 100px; height: 35px; margin-left: auto; margin-right: auto; display:block;" 
+        value="LOGIN!">
+        </form>
+    </div>
+
+    <div class="text-center" style="margin-top:3rem;">
+        <h4 class="color-white">회원이 아니신가요?</h4>
+        <div></div>
+        <a href="{% url 'accounts:signup' %}" style="width:150px; height: 40px; display:block; margin:15px auto;">
+        <button style="display:block; width:150px; height:40px;">회원가입</button>
+        </a>
+    </div>
+    
+{% endblock content %}

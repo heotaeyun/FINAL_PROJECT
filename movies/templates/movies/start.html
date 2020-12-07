@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>How to Create responsive Homepage</title>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'stylesheets/start.css' %}">
+  {% block css %}{% endblock %}
+</head>
+<body>
+<header>
+    <div class="wrapper">
+        <div class="logo"  style="width: 150px; height: 70px;">
+			<h2>ABOUT MOVIE</h2>
+        </div>
+<ul class="nav-area">
+<li><a href="#">Home</a></li>
+<li><a href="http://127.0.0.1:8000/movies/about/">About</a></li>
+<li><a href="http://127.0.0.1:8000/movies/popular/">Services</a></li>
+</ul>
+</div>
+<div class="welcome-text">
+	<a href="{% url 'accounts:login' %}">
+		<h1>About <span>MOVIE</span></h1>
+		<img style="width: 400px; height: 300px"src="{% static 'img/undraw_movie_night_fldd.svg' %}" alt="">
+	</a>
+</div>
+</header>
+
+</body>
+</html>
